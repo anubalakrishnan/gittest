@@ -1,0 +1,298 @@
+<apex:page standardController="Account" extensions="NewOpportunityCreationAccountController" sidebar="true">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!saveData}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2" title="Opportunity Information" collapsible="False">
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Name.inlineHelpText}">
+                    <apex:outputLabel >Opportunity Name</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Name}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Shell_Project_Created__c.inlineHelpText}">
+                    <apex:outputLabel >Shell Project Created?</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Shell_Project_Created__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.AccountId.inlineHelpText}">
+                    <apex:outputLabel >Client Legal Name</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.AccountId}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Opportunity Owner</apex:outputLabel>
+                    <apex:outputField value="{!newOpp.OwnerId}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Opportunity Currency</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.CurrencyIsoCode}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.StageName.inlineHelpText}">
+                    <apex:outputLabel >Stage</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.StageName}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.LeadSource.inlineHelpText}">
+                    <apex:outputLabel >Lead Source</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.LeadSource}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Probability.inlineHelpText}">
+                    <apex:outputLabel >Probability (%)</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Probability}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Type.inlineHelpText}">
+                    <apex:outputLabel >Type</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Type}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.pse__Primary_Project__c.inlineHelpText}">
+                    <apex:outputLabel >Primary Project</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.pse__Primary_Project__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.CloseDate.inlineHelpText}">
+                    <apex:outputLabel >Close Date</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.CloseDate}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Opportunity Record Type</apex:outputLabel>
+                    <apex:outputField value="{!newOpp.RecordTypeId}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Amount.inlineHelpText}">
+                    <apex:outputLabel >Revenue</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Amount}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Margin_Percent__c.inlineHelpText}">
+                    <apex:outputLabel >Margin (%)</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Margin_Percent__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.CPQ_Exempt__c.inlineHelpText}">
+                    <apex:outputLabel >CPQ Exempt</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.CPQ_Exempt__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="2" title="Project Information" collapsible="False">
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.pse__Region__c.inlineHelpText}">
+                    <apex:outputLabel >Region</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.pse__Region__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Start_Date__c.inlineHelpText}">
+                    <apex:outputLabel >Start Date</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Start_Date__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.pse__Practice__c.inlineHelpText}">
+                    <apex:outputLabel >Practice</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.pse__Practice__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.End_Date__c.inlineHelpText}">
+                    <apex:outputLabel >End Date</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.End_Date__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.pse__Group__c.inlineHelpText}">
+                    <apex:outputLabel >Group</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.pse__Group__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Client_Business_Unit_CBU__c.inlineHelpText}">
+                    <apex:outputLabel >CBU/CoE/SS</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Client_Business_Unit_CBU__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Sub_Practices__c.inlineHelpText}">
+                    <apex:outputLabel >Sub-Practices</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Sub_Practices__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Line_of_Business_LOB__c.inlineHelpText}">
+                    <apex:outputLabel >Line of Business (LOB)</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Line_of_Business_LOB__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Services_Sub_Services__c.inlineHelpText}">
+                    <apex:outputLabel >Services/Sub-Services</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Services_Sub_Services__c}" required="true"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="2" title="Operational Information" collapsible="False">
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.MOF_Approved__c.inlineHelpText}">
+                    <apex:outputLabel >MOF Approved (include in forecast)</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.MOF_Approved__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Revenue_Type__c.inlineHelpText}">
+                    <apex:outputLabel >Revenue Type</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Revenue_Type__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Project_Type__c.inlineHelpText}">
+                    <apex:outputLabel >ERP Project Type</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Project_Type__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Reporting_Type__c.inlineHelpText}">
+                    <apex:outputLabel >Reporting Type</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Reporting_Type__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Whitespace__c.inlineHelpText}">
+                    <apex:outputLabel >Whitespace</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Whitespace__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.ffrrtemplate__c.inlineHelpText}">
+                    <apex:outputLabel >Rev Mgmt Template</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.ffrrtemplate__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="2" title="Stage Activity Information" collapsible="False">
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Specific_Project_Identified_w__c.inlineHelpText}">
+                    <apex:outputLabel >Specific Project Identified w/Dollars</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Specific_Project_Identified_w__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Budget_Secured__c.inlineHelpText}">
+                    <apex:outputLabel >Budget Secured</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Budget_Secured__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Long_Shot_Very_High_Level_Conversation__c.inlineHelpText}">
+                    <apex:outputLabel >Long Shot/Very High Level Conversation</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Long_Shot_Very_High_Level_Conversation__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Pitch_complete_Buying_Signals__c.inlineHelpText}">
+                    <apex:outputLabel >Pitch Complete &amp; Buying Signals</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Pitch_complete_Buying_Signals__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Multiple_Agencies_Competing__c.inlineHelpText}">
+                    <apex:outputLabel >Multiple Agencies Competing</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Multiple_Agencies_Competing__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Business_Expected_To_Move_Forward__c.inlineHelpText}">
+                    <apex:outputLabel >Business Expected To Move Forward</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Business_Expected_To_Move_Forward__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.No_Clear_Front_Runner__c.inlineHelpText}">
+                    <apex:outputLabel >No Clear Front Runner</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.No_Clear_Front_Runner__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Verbal_Email_Approval__c.inlineHelpText}">
+                    <apex:outputLabel >Verbal/Email Approval</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Verbal_Email_Approval__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Non_Competitive_Initial_Work_With_Client__c.inlineHelpText}">
+                    <apex:outputLabel >Non-Competitive/Initial Work With Client</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Non_Competitive_Initial_Work_With_Client__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Awaiting_Final_Signature__c.inlineHelpText}">
+                    <apex:outputLabel >Awaiting Final Signature</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Awaiting_Final_Signature__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Non_Competitive_w_Organic_Client__c.inlineHelpText}">
+                    <apex:outputLabel >Non-Competitive w/Organic Client</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Non_Competitive_w_Organic_Client__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Signed_Quote_PO_Received__c.inlineHelpText}">
+                    <apex:outputLabel >Signed Quote/PO Received</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Signed_Quote_PO_Received__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Lead_Agency__c.inlineHelpText}">
+                    <apex:outputLabel >Lead Agency</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Lead_Agency__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="2" title="Stage Activity Risks" collapsible="False">
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Budget_Somewhat_Reduced__c.inlineHelpText}">
+                    <apex:outputLabel >Budget Somewhat Reduced</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Budget_Somewhat_Reduced__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Client_May_Not_Proceed__c.inlineHelpText}">
+                    <apex:outputLabel >Client May Not Proceed</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Client_May_Not_Proceed__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Client_Budget_in_Question__c.inlineHelpText}">
+                    <apex:outputLabel >Budget in Question/Reduced Significantly</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Client_Budget_in_Question__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Closed_Not_Moving_Forward__c.inlineHelpText}">
+                    <apex:outputLabel >Closed/Not Moving Forward</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Closed_Not_Moving_Forward__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="2" title="Competitor Conditions" collapsible="False">
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Mode_of_Submission__c.inlineHelpText}">
+                    <apex:outputLabel >Mode of Submission</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Mode_of_Submission__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Lost_Notes_Comments__c.inlineHelpText}">
+                    <apex:outputLabel >Not Moving Forward Notes/Comments</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Lost_Notes_Comments__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Audience__c.inlineHelpText}">
+                    <apex:outputLabel >Audience</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Audience__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Lost_Reason__c.inlineHelpText}">
+                    <apex:outputLabel >Not Moving Forward Reason</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Lost_Reason__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Notes_Conditions__c.inlineHelpText}">
+                    <apex:outputLabel >Notes/Conditions</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Notes_Conditions__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Stayed_with_Incumbent__c.inlineHelpText}">
+                    <apex:outputLabel >Stayed with Incumbent</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Stayed_with_Incumbent__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Won_Reason__c.inlineHelpText}">
+                    <apex:outputLabel >Won Reason</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Won_Reason__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Secondary_Lost_Reason__c.inlineHelpText}">
+                    <apex:outputLabel >Secondary Not Moving Forward Reason</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Secondary_Lost_Reason__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Won_Notes_Comments__c.inlineHelpText}">
+                    <apex:outputLabel >Won Notes/Comments</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Won_Notes_Comments__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="2" title="Approvers" collapsible="False">
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.MOF__c.inlineHelpText}">
+                    <apex:outputLabel >MOF</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.MOF__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Senior_Vice_President__c.inlineHelpText}">
+                    <apex:outputLabel >Senior Vice President</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Senior_Vice_President__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Director__c.inlineHelpText}">
+                    <apex:outputLabel >Director</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Director__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.President__c.inlineHelpText}">
+                    <apex:outputLabel >President</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.President__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Vice_President__c.inlineHelpText}">
+                    <apex:outputLabel >Vice President</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Vice_President__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Project_Accounting__c.inlineHelpText}">
+                    <apex:outputLabel >Project Accounting</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Project_Accounting__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="{!$ObjectType.Opportunity.fields.Executive__c.inlineHelpText}">
+                    <apex:outputLabel >Executive</apex:outputLabel>
+                    <apex:inputField value="{!newOpp.Executive__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+                           
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>
